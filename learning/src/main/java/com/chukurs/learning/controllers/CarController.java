@@ -14,15 +14,16 @@ import java.util.List;
 public class CarController {
 
     private CarService carService;
-
+    private CarService carService2;
     @Autowired
 //    public void setCarService(@Qualifier("superCarServiceImpl")CarService carService) {
 //        this.carService = carService;
 //    }
 
-    public void CarController(@Qualifier("superCarServiceImpl") CarService carService) {
+    public void CarController(CarService carService,CarService carService2) {
 
         this.carService = carService;
+        this.carService2 = carService2;
     }
     @GetMapping(path = "/car")
     public String getCar() {
