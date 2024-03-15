@@ -22,10 +22,15 @@ public class CarController {
 //        this.carService = carService;
 //    }
 
-    public void CarController(@Qualifier("superCarServiceImpl")CarService carService,@Qualifier("classicCarServiceImpl")CarService carService2) {
+//    public void CarController(@Qualifier("superCarServiceImpl")CarService carService,@Qualifier("classicCarServiceImpl")CarService carService2) {
+//        System.out.println("carController constructor");
+//        this.carService = carService;
+//        this.carService2 = carService2;
+//    }
+
+    public CarController(@Qualifier("anyNameUWish")CarService carService){
         System.out.println("carController constructor");
         this.carService = carService;
-        this.carService2 = carService2;
     }
     @PostConstruct
     public void beforeBean(){
@@ -41,7 +46,7 @@ public class CarController {
     }
     @GetMapping(path = "/car2")
     public String getCar2() {
-        return (carService2.drive());
+        return (carService.drive());
     }
 
 
