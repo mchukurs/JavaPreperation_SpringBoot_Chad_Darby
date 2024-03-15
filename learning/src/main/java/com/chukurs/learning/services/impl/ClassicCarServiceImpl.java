@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Primary
 //@Lazy
 @Component
-@Scope (ConfigurableBeanFactory.SCOPE_PROTOTYPE)//creates 1 obj per injection point
+@Scope (ConfigurableBeanFactory.SCOPE_SINGLETON)//creates 1 obj per injection point
 public class ClassicCarServiceImpl implements CarService {
     public ClassicCarServiceImpl(){
         System.out.println("classic car constructor");

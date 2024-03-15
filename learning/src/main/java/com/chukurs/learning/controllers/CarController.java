@@ -27,7 +27,7 @@ public class CarController {
     }
     @GetMapping(path = "/car")
     public String getCar() {
-        return carService.drive();
+        return (carService.drive()) + "\n"+" carService==carService2: "+ (carService==carService2);
     }
 
 
