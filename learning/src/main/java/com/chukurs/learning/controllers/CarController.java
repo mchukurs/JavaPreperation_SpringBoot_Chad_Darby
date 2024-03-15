@@ -20,7 +20,7 @@ public class CarController {
 //        this.carService = carService;
 //    }
 
-    public void CarController( CarService carService) {
+    public void CarController(@Qualifier("superCarServiceImpl") CarService carService) {
         this.carService = carService;
     }
     @GetMapping(path = "/car")

@@ -9,6 +9,6 @@ import org.springframework.stereotype.Service;
 public class SuperCarServiceImpl implements CarService {
     @Override
     public String drive() {
-        return "Drive super car";
+        return "Drive super car (its qualifier, so higher priority)";
     }
 }
