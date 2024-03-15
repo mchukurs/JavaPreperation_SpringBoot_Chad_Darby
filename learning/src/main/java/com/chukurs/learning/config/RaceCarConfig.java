@@ -11,7 +11,7 @@ public class RaceCarConfig {
     private RaceCarServiceImpl raceCarService;
 
     @Bean
-    public RaceCarServiceImpl anyNameUWish() {
+    public CarService anyNameUWish() {
         return new RaceCarServiceImpl();
     }
 }
