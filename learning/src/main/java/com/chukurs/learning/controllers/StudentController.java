@@ -8,8 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 public class StudentController {
@@ -27,6 +26,18 @@ public class StudentController {
     public List<Student> getStudents() {
         List<Student> students = studentDAO.findAll();
         return students;
+    }
+
+    @GetMapping(path = "/createStudents")
+    public void createStudents() {
+        List<Integer> studentCount = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
+
+        studentCount.forEach(
+                (a) -> {
+                    studentDAO.save(new Student("Christopher", String.valueOf((char) (a.intValue()+64)), "smth@mail.com"));
+                }
+
+        );
     }
 
     @GetMapping(path = "/student")
@@ -47,6 +58,11 @@ public class StudentController {
         student.setFirstName(newName);
         studentDAO.update(student);
         System.out.println("The name of " + student.getLastName() + " was changed to " + newName);
+    }
+
+    @GetMapping(path = "/studentDelete/{id}")
+    public void deleteStudent(@PathVariable int id) {
+        studentDAO.delete(id);
     }
 
 

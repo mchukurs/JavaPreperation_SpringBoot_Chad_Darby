@@ -56,4 +56,13 @@ public class StudentDAOImpl implements StudentDAO {
     public void update(Student theStudent) {
         entityManager.merge(theStudent);
     }
+
+    @Override
+    @Transactional //as update is done on DB, not sure why BUT its throwing an error if this is not here
+    public void delete(int id) {
+        System.out.println("Number of entries deleted: ");
+       int a = entityManager.createQuery("DELETE FROM Student").executeUpdate();
+
+
+    }
 }
