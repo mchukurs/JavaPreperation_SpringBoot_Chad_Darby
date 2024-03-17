@@ -34,10 +34,19 @@ public class StudentController {
         Optional<Student> student = Optional.ofNullable(studentDAO.findById(id));
         return student.toString();
     }
+
     @GetMapping(path = "/student/{lastName}")
     public List<Student> getStudentByLastName(@PathVariable String lastName) {
         List<Student> students = studentDAO.findByLastName(lastName);
         return students;
+    }
+
+    @GetMapping(path = "/students/{id}")
+    public void updateStudent(@PathVariable int id, @RequestParam String newName) {
+        Student student = studentDAO.findById(id);
+        student.setFirstName(newName);
+        studentDAO.update(student);
+        System.out.println("The name of " + student.getLastName() + " was changed to " + newName);
     }
 
 
