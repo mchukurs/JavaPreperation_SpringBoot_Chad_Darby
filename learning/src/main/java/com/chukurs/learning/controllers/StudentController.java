@@ -6,9 +6,7 @@ import com.chukurs.learning.services.CarService;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,7 +25,7 @@ public class StudentController {
 
     @GetMapping(path = "/students")
     public List<Student> getStudents() {
-        List<Student> students = studentDAO.find();
+        List<Student> students = studentDAO.findAll();
         return students;
     }
 
@@ -35,6 +33,11 @@ public class StudentController {
     public String getStudentById(@RequestParam int id) {
         Optional<Student> student = Optional.ofNullable(studentDAO.findById(id));
         return student.toString();
+    }
+    @GetMapping(path = "/student/{lastName}")
+    public List<Student> getStudentByLastName(@PathVariable String lastName) {
+        List<Student> students = studentDAO.findByLastName(lastName);
+        return students;
     }
 
 

@@ -3,6 +3,7 @@ package com.chukurs.learning.dao;
 import com.chukurs.learning.entity.Student;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,9 +38,16 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public List<Student> find() {
-        Query query = entityManager.createNativeQuery("SELECT * FROM student");
+    public List<Student> findByLastName(String lastName) {
+        TypedQuery<Student> theQuery = entityManager.createQuery("FROM Student WHERE lastName = :lastName",Student.class);
+        theQuery.setParameter("lastName",lastName);
+        return theQuery.getResultList();
+    }
 
-        return query.getResultList();
+    @Override
+    public List<Student> findAll() {
+        TypedQuery<Student> theQuery = entityManager.createQuery("FROM Student order by lastName",Student.class);
+
+        return theQuery.getResultList();
     }
 }

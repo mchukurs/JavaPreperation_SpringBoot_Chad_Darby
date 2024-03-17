@@ -7,7 +7,10 @@ import java.util.Optional;
 
 public interface StudentDAO {
     void save(Student theStudent);
+
     Student findById(int id);
 
-    List<Student> find();
+    List<Student> findByLastName(String lastName);
+
+    List<Student> findAll();
 }
