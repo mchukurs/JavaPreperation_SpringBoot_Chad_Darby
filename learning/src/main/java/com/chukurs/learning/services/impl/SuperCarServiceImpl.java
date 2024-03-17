@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)//creates 1 obj per injection point
-@Lazy //redundandt as prototype by default is Lazy
+@Lazy //redundant as prototype by default is Lazy
 public class SuperCarServiceImpl implements CarService {
     @PreDestroy
     public void afterBean(){
