@@ -1,4 +1,4 @@
-package com.chukurs.simpleCrud.rest;
+package com.chukurs.simpleCrud.rest.exceptionHandlers.student;
 
 public class StudentErrorResponse {
     private int status;
