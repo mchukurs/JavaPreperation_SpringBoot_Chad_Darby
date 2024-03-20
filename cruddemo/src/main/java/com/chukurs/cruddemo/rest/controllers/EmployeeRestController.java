@@ -2,6 +2,7 @@ package com.chukurs.cruddemo.rest.controllers;
 
 import com.chukurs.cruddemo.dao.EmployeeDAO;
 import com.chukurs.cruddemo.entity.Employee;
+import com.chukurs.cruddemo.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,15 +13,15 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class EmployeeRestController {
-    EmployeeDAO employeeDAO; //will refactor later, this should not be injected directly, there should be a service layer
+    EmployeeService employeeService;
 
     @Autowired
-    public EmployeeRestController(EmployeeDAO employeeDAO) {
-        this.employeeDAO = employeeDAO;
+    public EmployeeRestController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
 
     @GetMapping(path = "/employees")
     public List<Employee> findAll() {
-        return employeeDAO.findAll();
+        return employeeService.findAll();
     }
 }
