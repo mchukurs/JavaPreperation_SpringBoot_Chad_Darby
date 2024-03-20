@@ -4,10 +4,7 @@ import com.chukurs.cruddemo.dao.EmployeeDAO;
 import com.chukurs.cruddemo.entity.Employee;
 import com.chukurs.cruddemo.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,8 +24,29 @@ public class EmployeeRestController {
     }
 
     @GetMapping(path = "/employees/{id}")
-
     public Employee findById(@PathVariable int id) {
-        return employeeService.findById(id);
+        Employee employee = employeeService.findById(id);
+        if (employee == null) {
+            throw new RuntimeException("Employee id not found " + id);
+        }
+        return employee;
+    }
+
+    @PostMapping(path = "/employees")
+    public Employee add(@RequestBody Employee employee) {
+        employee.setId(0);
+        System.out.println(employee.getEmail());
+        Employee dbEmployee = employeeService.save(employee);
+        return dbEmployee;
+    }
+
+    @PutMapping(path = "/employees")
+    public Employee update(@RequestBody Employee employee) {
+        return employeeService.save(employee);
+    }
+
+    @DeleteMapping(path = "/employees")
+    public void deleteById(int id) {
+        employeeService.deleteById(id);
     }
 }
