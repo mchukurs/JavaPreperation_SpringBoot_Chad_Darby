@@ -4,6 +4,7 @@ import com.chukurs.cruddemo.entity.Employee;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.swing.text.html.parser.Entity;
@@ -23,5 +24,10 @@ public class EmployeeDAOJpaImpl implements EmployeeDAO {
         TypedQuery<Employee> query = entityManager.createQuery("FROM Employee", Employee.class);
 
         return query.getResultList();
+    }
+
+    @Override
+    public Employee findById(@Param("id") int id) {
+        return entityManager.find(Employee.class, id);
     }
 }

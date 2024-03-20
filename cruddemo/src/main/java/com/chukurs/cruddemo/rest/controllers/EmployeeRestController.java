@@ -5,6 +5,7 @@ import com.chukurs.cruddemo.entity.Employee;
 import com.chukurs.cruddemo.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,5 +24,11 @@ public class EmployeeRestController {
     @GetMapping(path = "/employees")
     public List<Employee> findAll() {
         return employeeService.findAll();
+    }
+
+    @GetMapping(path = "/employees/{id}")
+
+    public Employee findById(@PathVariable int id) {
+        return employeeService.findById(id);
     }
 }
