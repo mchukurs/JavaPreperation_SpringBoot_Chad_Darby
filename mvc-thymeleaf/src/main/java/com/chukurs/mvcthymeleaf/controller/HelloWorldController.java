@@ -3,6 +3,8 @@ package com.chukurs.mvcthymeleaf.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.unbescape.xml.XmlEscape;
@@ -11,13 +13,13 @@ import org.unbescape.xml.XmlEscape;
 public class HelloWorldController {
 
 
-    @RequestMapping(path = "/showForm")
+    @GetMapping(path = "/showForm")
     public String showForm() {
 
         return "helloworld-form";
     }
 
-    @RequestMapping(path = "/processForm")
+    @PostMapping(path = "/processForm")
     public String processForm() {
 
         return "helloworld";
