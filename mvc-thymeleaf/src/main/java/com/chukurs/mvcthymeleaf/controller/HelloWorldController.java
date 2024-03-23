@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.unbescape.xml.XmlEscape;
 
 @Controller
@@ -23,8 +24,7 @@ public class HelloWorldController {
     }
 
     @RequestMapping(path = "/processFormVersionTwo")
-    public String processFormVersionTwo(HttpServletRequest request, Model model) {
-        String theName = request.getParameter("studentName");
+    public String processFormVersionTwo(@RequestParam("studentName") String theName,HttpServletRequest request, Model model) {
 
         theName = theName.toUpperCase();
         String result = "YO " + theName;
