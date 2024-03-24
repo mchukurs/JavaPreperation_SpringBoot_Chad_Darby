@@ -6,9 +6,17 @@ public class Student {
     private String lastName;
     private String country;
     private String programmingLanguage;
-
+private String operatingSystems;
     public Student() {
     };
+
+    public String getOperatingSystems() {
+        return operatingSystems;
+    }
+
+    public void setOperatingSystems(String operatingSystems) {
+        this.operatingSystems = operatingSystems;
+    }
 
     public String getProgrammingLanguage() {
         return programmingLanguage;

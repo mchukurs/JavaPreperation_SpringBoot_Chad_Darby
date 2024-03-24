@@ -16,6 +16,8 @@ public class StudentController {
     private List<String> countries;
     @Value("${programmingLanguages}")
     private List<String> programmingLanguages;
+    @Value("${operatingSystems}")
+    private List<String> operatingSystems;
 
     @GetMapping(path = "/showStudentForm")
 
@@ -25,6 +27,7 @@ public class StudentController {
         theModel.addAttribute("student", newStudent);
         theModel.addAttribute("countries", countries);
         theModel.addAttribute("programmingLanguages", programmingLanguages);
+        theModel.addAttribute("operatingSystems", operatingSystems);
         return "student-form";
     }
 
