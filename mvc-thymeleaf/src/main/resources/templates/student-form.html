@@ -13,8 +13,17 @@
     <!-- th:field="*{firstName}" == th:field="{student.firstName}"-->
     First name <input type="text" th:field="*{firstName}"/>
     Last name <input type="text" th:field="*{lastName}"/>
-    <br> <br>
 
+
+    <br> <br>
+    Country:
+    <select th:field="*{country}">
+        <option th:value="Brazil"> Brazil</option>
+        <option th:value="Latvia">Latvia</option>
+        <option th:value="France">France</option>
+        <option th:value="India"> India</option>
+        <option th:value="Germany"> Germany</option>
+    </select>
 
     <input type="submit" valie="Submit"/>
 
