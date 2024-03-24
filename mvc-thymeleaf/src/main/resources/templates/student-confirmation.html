@@ -7,8 +7,10 @@
 <body>
 The student is: <span th:text="${student.firstName} + ' ' + ${student.lastName}"/>
 and is from <span th:text="${student.country}"/>
-and favorite programming language is  <span th:text="${student.programmingLanguage}"/>
-and favorite operating systems are  <span th:text="${student.operatingSystems}"/>
-
+and favorite programming language is <span th:text="${student.programmingLanguage}"/>
+and favorite operating systems are
+<ul>
+    <li th:each="tempOS : ${student.favSystems}" th:text="${tempOS}"/>
+</ul>
 </body>
 </html>

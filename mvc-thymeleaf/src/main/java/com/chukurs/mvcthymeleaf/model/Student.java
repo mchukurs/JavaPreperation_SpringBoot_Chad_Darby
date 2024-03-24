@@ -1,21 +1,26 @@
 package com.chukurs.mvcthymeleaf.model;
 
+import java.util.List;
+
 public class Student {
 
     private String firstName;
     private String lastName;
     private String country;
     private String programmingLanguage;
-private String operatingSystems;
-    public Student() {
-    };
+    private List<String> favSystems;
 
-    public String getOperatingSystems() {
-        return operatingSystems;
+    public Student() {
     }
 
-    public void setOperatingSystems(String operatingSystems) {
-        this.operatingSystems = operatingSystems;
+    ;
+
+    public List<String> getFavSystems() {
+        return favSystems;
+    }
+
+    public void setFavSystems(List<String> favSystems) {
+        this.favSystems = favSystems;
     }
 
     public String getProgrammingLanguage() {
