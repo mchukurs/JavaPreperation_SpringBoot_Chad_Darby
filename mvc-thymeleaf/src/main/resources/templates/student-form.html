@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student registration form </title>
+    <link rel="stylesheet"
+          th:href="@{/css/demo.css}"/>
+</head>
+<body>
+<h3> Student registration form</h3>
+<form th:action="@{/processStudentForm}" th:object="${student}" method="POST">
+
+    <!-- th:field="*{firstName}" == th:field="{student.firstName}"-->
+    First name <input type="text" th:field="*{firstName}"/>
+    Last name <input type="text" th:field="*{lastName}"/>
+    <br> <br>
+
+
+    <input type="submit" valie="Submit"/>
+
+</form>
+</body>
+</html>
