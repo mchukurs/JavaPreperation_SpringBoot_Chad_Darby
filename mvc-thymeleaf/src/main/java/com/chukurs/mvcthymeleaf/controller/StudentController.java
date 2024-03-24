@@ -14,6 +14,8 @@ import java.util.List;
 public class StudentController {
     @Value("${countries}")
     private List<String> countries;
+    @Value("${programmingLanguages}")
+    private List<String> programmingLanguages;
 
     @GetMapping(path = "/showStudentForm")
 
@@ -22,6 +24,7 @@ public class StudentController {
         Student newStudent = new Student();
         theModel.addAttribute("student", newStudent);
         theModel.addAttribute("countries", countries);
+        theModel.addAttribute("programmingLanguages", programmingLanguages);
         return "student-form";
     }
 
