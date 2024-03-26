@@ -1,8 +1,19 @@
 package com.chukurs.springdemo.mvc;
 
+import com.chukurs.springdemo.mvc.validation.CourseCode;
+import jakarta.validation.Constraint;
 import jakarta.validation.constraints.*;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
 public class Customer {
+
+
+    @CourseCode(value = "CHUKURS", message = "Must start with CHUKURS")
+    private String courseCode;
     @Pattern(regexp = "^[a-zA-Z0-9]{5}", message = "only 5 chars/digits")
     private String postalCode;
     @NotNull
@@ -14,6 +25,14 @@ public class Customer {
     @NotNull(message = "is required")
     @Size(min = 1, message = "is required")
     private String lastName = "";
+
+    public String getCourseCode() {
+        return courseCode;
+    }
+
+    public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
+    }
 
     public String getPostalCode() {
         return postalCode;
