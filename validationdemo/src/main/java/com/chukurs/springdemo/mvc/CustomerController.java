@@ -32,6 +32,7 @@ public class CustomerController {
 
     @InitBinder // pre-process all web requests coming in
     public void initBinder(WebDataBinder dataBinder) {
+        //automatically called for each WEB request coming in
 //trim leading/trailing spaces
         StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
         dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
