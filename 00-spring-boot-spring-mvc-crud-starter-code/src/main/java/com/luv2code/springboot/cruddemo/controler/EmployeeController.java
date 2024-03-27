@@ -35,6 +35,12 @@ public class EmployeeController {
         return "employees/employee-form";
     }
 
+    @GetMapping("/delete")
+    public String delete(@RequestParam("employeeId") int theId) {
+        employeeService.deleteById(theId);
+        return "redirect:/employees/list";
+    }
+
     @GetMapping("/showFormForUpdate")
     public String showFormForUpdate(@RequestParam("employeeId") int theId, Model theModel) {
         //get the employee from DB via service
