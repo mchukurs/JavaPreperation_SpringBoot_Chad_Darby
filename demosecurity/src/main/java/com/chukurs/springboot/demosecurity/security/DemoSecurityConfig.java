@@ -14,14 +14,15 @@ public class DemoSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(configurer ->
-                configurer
-                        .anyRequest().authenticated()
-        ).formLogin(form ->
-                form
-                        .loginPage("/showMyLoginPage")//controller required to handle this
-                        .loginProcessingUrl("/authenticateTheUser")//this is provided by Spring
-                        .permitAll()
-        );
+                        configurer
+                                .anyRequest().authenticated()
+                ).formLogin(form ->
+                        form
+                                .loginPage("/showMyLoginPage")//controller required to handle this
+                                .loginProcessingUrl("/authenticateTheUser")//this is provided by Spring
+                                .permitAll()
+                )
+                .logout(logout -> logout.permitAll());
         return http.build();
     }
 
