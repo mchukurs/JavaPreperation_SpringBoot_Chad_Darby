@@ -23,21 +23,26 @@
 <!--
 Add link to point to /leader -- for MANAGERS
 -->
-<p>
+<div sec:authorize="hasRole('MANAGER')">
+    <p>
 
-    <a th:href="@{/leaders}"> Leadership Meeting (Only for ROLE_MANAGER)</a>
-</p>
-<hr>
-<hr>
+        <a th:href="@{/leaders}"> Leadership Meeting (Only for ROLE_MANAGER)</a>
+    </p>
+    <hr>
+    <hr>
+</div>
+
 
 <!--
 Add link to point to /systems -- for ADMINS
 -->
 <p>
-
+<div sec:authorize="hasRole('ADMIN')">
     <a th:href="@{/systems}"> IT Systems Meeting (Only for ROLE_ADMIN)</a>
 </p>
-<hr>
+    <hr>
+</div>
+
 <form action="#" th:action="@{/logout}" method="POST">
 
     <input type="submit" value="Logout"/>
