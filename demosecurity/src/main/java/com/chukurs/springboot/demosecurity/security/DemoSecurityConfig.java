@@ -17,22 +17,9 @@ public class DemoSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(configurer ->
-                        configurer
-                                .requestMatchers("/").hasRole("EMPLOYEE")
-                                .requestMatchers("/leaders/**").hasRole("MANAGER")
-                                .requestMatchers("/systems/**").hasRole("ADMIN")
-                                .anyRequest().authenticated()
-                ).formLogin(form ->
-                        form
-                                .loginPage("/showMyLoginPage")//controller required to handle this
-                                .loginProcessingUrl("/authenticateTheUser")//this is provided by Spring
-                                .permitAll()
-                )
-                .logout(logout -> logout.permitAll())
-                .exceptionHandling(configurer ->
-                        configurer
-                                .accessDeniedPage("/access-denied"));
+        http.authorizeHttpRequests(configurer -> configurer.requestMatchers("/").hasRole("EMPLOYEE").requestMatchers("/leaders/**").hasRole("MANAGER").requestMatchers("/systems/**").hasRole("ADMIN").anyRequest().authenticated()).formLogin(form -> form.loginPage("/showMyLoginPage")//controller required to handle this
+                .loginProcessingUrl("/authenticateTheUser")//this is provided by Spring
+                .permitAll()).logout(logout -> logout.permitAll()).exceptionHandling(configurer -> configurer.accessDeniedPage("/access-denied"));
         return http.build();
     }
 
@@ -62,6 +49,11 @@ public class DemoSecurityConfig {
     @Bean
     public UserDetailsManager userDetailsManager(DataSource dataSource) {
         //all data taken from DB due to matching database schema and inbuilt spring mechanism
-        return new JdbcUserDetailsManager(dataSource);
+
+        JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
+        jdbcUserDetailsManager.setUsersByUsernameQuery("select user_id, pw, active from members where user_id=?");
+
+        jdbcUserDetailsManager.setAuthoritiesByUsernameQuery("select user_id, role from roles where user_id=?");
+        return jdbcUserDetailsManager;
     }
 }
