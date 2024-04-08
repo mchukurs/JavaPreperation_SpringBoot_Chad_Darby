@@ -1,4 +1,4 @@
-package entity;
+package com.chukurs.cruddemo.entity;
 
 import jakarta.persistence.*;
 
