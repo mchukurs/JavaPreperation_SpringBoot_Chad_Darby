@@ -14,6 +14,19 @@ public class InstructorDetail {
     @Column(name = "hobby")
     private String hobby;
 
+    @OneToOne(mappedBy = "instructorDetail", cascade = CascadeType.ALL)
+//hibernate checks on other class to find property
+    private Instructor instructor;
+
+
+    public Instructor getInstructor() {
+        return instructor;
+    }
+
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
+    }
+
     public String getYoutubeChannel() {
         return youtubeChannel;
     }
