@@ -27,11 +27,11 @@ public class CruddemoApplication {
     }
 
     private void deleteInstructorDetail(AppDAO appDAO) {
-        InstructorDetail instructorDetail = appDAO.findInstructorDetailById(2L);
+        InstructorDetail instructorDetail = appDAO.findInstructorDetailById(4L);
         System.out.println("detail " + instructorDetail);
         System.out.println("instructor " + instructorDetail.getInstructor());
-        System.out.println("deleting both");
-        appDAO.deleteInstructorDetailById(2L);
+        System.out.println("deleting just detail");
+        appDAO.deleteInstructorDetailById(4L);
 
     }
 
@@ -49,15 +49,15 @@ public class CruddemoApplication {
 
     private void createInstructor(AppDAO appDAO) {
 
-
+/*
         Instructor instructor = new Instructor("Matiss", "Cukurs", "matiss@mail.com");
         InstructorDetail instructorDetail = new InstructorDetail("http://www.yt.com/ya", "kite");
         instructor.setInstructorDetail(instructorDetail);
-/*
+*/
         Instructor instructor = new Instructor("Ssitam", "Srukuc", "siitam@mail.com");
         InstructorDetail instructorDetail = new InstructorDetail("http://www.yt.com/no", "bowl");
         instructor.setInstructorDetail(instructorDetail);
-*/
+
 
         System.out.println(instructor);
         appDAO.save(instructor);
