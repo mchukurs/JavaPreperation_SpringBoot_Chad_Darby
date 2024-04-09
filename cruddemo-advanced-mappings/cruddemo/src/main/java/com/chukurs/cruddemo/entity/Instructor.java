@@ -24,7 +24,7 @@ public class Instructor {
     @JoinColumn(name = "instructor_detail_id")//telling hibernate what to join on
     private InstructorDetail instructorDetail;
 
-    @OneToMany(mappedBy = "instructor", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST})
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "instructor", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST})
     private List<Course> courses;
 
     public Instructor() {
@@ -90,9 +90,7 @@ public class Instructor {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", instructorDetail=" + instructorDetail +
-                ", courses=" + courses +
+                ", email='" + email+
                 '}';
     }
 

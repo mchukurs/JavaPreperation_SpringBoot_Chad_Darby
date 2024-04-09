@@ -24,8 +24,18 @@ public class CruddemoApplication {
             //deleteInstructor(appDAO);
             //findInstructorDetail(appDAO);
             //deleteInstructorDetail(appDAO);
-            createInstructorWithCourses(appDAO);
+            // createInstructorWithCourses(appDAO);
+            findInstructorWithCourses(appDAO);
         };
+    }
+
+    private void findInstructorWithCourses(AppDAO appDAO) {
+
+        Instructor instructor = appDAO.findInstructorById(1);
+        System.out.println(instructor);
+
+       System.out.println(instructor.getCourses());
+
     }
 
     private void createInstructorWithCourses(AppDAO appDAO) {
@@ -33,7 +43,7 @@ public class CruddemoApplication {
         InstructorDetail instructorDetail = new InstructorDetail("http://www.yt.com/he", "hair");
         instructor.setInstructorDetail(instructorDetail);
 
-        Course tempCourse1 = new Course("AIr guitar");
+        Course tempCourse1 = new Course("Air guitar");
         Course tempCourse2 = new Course("Pinball expert");
         instructor.add(tempCourse1);
         instructor.add(tempCourse2);
@@ -43,23 +53,23 @@ public class CruddemoApplication {
     }
 
     private void deleteInstructorDetail(AppDAO appDAO) {
-        InstructorDetail instructorDetail = appDAO.findInstructorDetailById(4L);
+        InstructorDetail instructorDetail = appDAO.findInstructorDetailById(4);
         System.out.println("detail " + instructorDetail);
         System.out.println("instructor " + instructorDetail.getInstructor());
         System.out.println("deleting just detail");
-        appDAO.deleteInstructorDetailById(4L);
+        appDAO.deleteInstructorDetailById(4);
 
     }
 
     private void findInstructorDetail(AppDAO appDAO) {
-        InstructorDetail instructorDetail = appDAO.findInstructorDetailById(2L);
+        InstructorDetail instructorDetail = appDAO.findInstructorDetailById(2);
         System.out.println("detail " + instructorDetail);
         System.out.printf("instructor " + instructorDetail.getInstructor());
     }
 
     private void deleteInstructor(AppDAO appDAO) {
         System.out.println("deleting instructor ");
-        appDAO.deleteInstructorById(1L);
+        appDAO.deleteInstructorById(1);
 
     }
 
@@ -83,7 +93,7 @@ public class CruddemoApplication {
 
     private void findInstructor(AppDAO appDAO) {
 
-        System.out.println(appDAO.findInstructorById(1L));
+        System.out.println(appDAO.findInstructorById(1));
     }
 
 }

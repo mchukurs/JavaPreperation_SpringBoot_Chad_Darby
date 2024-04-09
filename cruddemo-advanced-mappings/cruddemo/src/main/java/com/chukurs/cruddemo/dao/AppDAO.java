@@ -8,11 +8,11 @@ import org.springframework.stereotype.Repository;
 public interface AppDAO {
     void save(Instructor theInstructor);
 
-    Instructor findInstructorById(Long theId);
+    Instructor findInstructorById(int theId);
 
-    InstructorDetail findInstructorDetailById(Long theId);
+    InstructorDetail findInstructorDetailById(int theId);
 
-    void deleteInstructorById(Long theId);
-    void deleteInstructorDetailById(Long theId);
+    void deleteInstructorById(int theId);
+    void deleteInstructorDetailById(int theId);
 
 }
