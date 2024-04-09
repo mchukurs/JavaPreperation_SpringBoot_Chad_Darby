@@ -1,6 +1,7 @@
 package com.chukurs.cruddemo;
 
 import com.chukurs.cruddemo.dao.AppDAO;
+import com.chukurs.cruddemo.entity.Course;
 import com.chukurs.cruddemo.entity.Instructor;
 import com.chukurs.cruddemo.entity.InstructorDetail;
 import org.springframework.boot.CommandLineRunner;
@@ -22,8 +23,23 @@ public class CruddemoApplication {
             //  findInstructor(appDAO);
             //deleteInstructor(appDAO);
             //findInstructorDetail(appDAO);
-            deleteInstructorDetail(appDAO);
+            //deleteInstructorDetail(appDAO);
+            createInstructorWithCourses(appDAO);
         };
+    }
+
+    private void createInstructorWithCourses(AppDAO appDAO) {
+        Instructor instructor = new Instructor("John", "Bravo", "johny@mail.com");
+        InstructorDetail instructorDetail = new InstructorDetail("http://www.yt.com/he", "hair");
+        instructor.setInstructorDetail(instructorDetail);
+
+        Course tempCourse1 = new Course("AIr guitar");
+        Course tempCourse2 = new Course("Pinball expert");
+        instructor.add(tempCourse1);
+        instructor.add(tempCourse2);
+
+        appDAO.save(instructor);
+
     }
 
     private void deleteInstructorDetail(AppDAO appDAO) {
