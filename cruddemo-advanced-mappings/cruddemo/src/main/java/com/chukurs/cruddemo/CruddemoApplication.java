@@ -29,13 +29,31 @@ public class CruddemoApplication {
             // createInstructorWithCourses(appDAO);
             //findInstructorWithCourses(appDAO);
             //findCoursesForInstructor(appDAO);
-            findInstructorWithCoursesJoinFetch(appDAO);
+            //  findInstructorWithCoursesJoinFetch(appDAO);
+            //updateInstructor(appDAO);
+            updateCourse(appDAO);
         };
+    }
+
+    private void updateCourse(AppDAO appDAO) {
+        int tempId = 10;
+        Course course = appDAO.findCourseById(tempId);
+
+
+        course.setTitle("Ya yee");
+        appDAO.updateCourse(course);
     }
 
     private void findInstructorWithCoursesJoinFetch(AppDAO appDAO) {
         var a = appDAO.findInstructorByIdJoinFetch(1);
         System.out.println(a);
+    }
+
+    private void updateInstructor(AppDAO appDAO) {
+        int theId = 1;
+        Instructor tempInstructor = appDAO.findInstructorById(theId);
+        tempInstructor.setLastName("UpdatedLastName");
+        appDAO.updateInstructor(tempInstructor);
     }
 
     private void findCoursesForInstructor(AppDAO appDAO) {
