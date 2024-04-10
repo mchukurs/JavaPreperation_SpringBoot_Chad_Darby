@@ -4,6 +4,7 @@ import com.chukurs.cruddemo.dao.AppDAO;
 import com.chukurs.cruddemo.entity.Course;
 import com.chukurs.cruddemo.entity.Instructor;
 import com.chukurs.cruddemo.entity.InstructorDetail;
+import com.chukurs.cruddemo.entity.Review;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -31,8 +32,27 @@ public class CruddemoApplication {
             //findCoursesForInstructor(appDAO);
             //  findInstructorWithCoursesJoinFetch(appDAO);
             //updateInstructor(appDAO);
-            updateCourse(appDAO);
+            //updateCourse(appDAO);
+            //deleteCourse(appDAO);
+            createCourseAndReviews(appDAO);
+
         };
+    }
+
+    private void createCourseAndReviews(AppDAO appDAO) {
+        //create a course, add reviews, push to db
+        Course newCourse = new Course("Tester Course");
+        newCourse.addReview(new Review("great test course"));
+        newCourse.addReview(new Review("average test course"));
+        newCourse.addReview(new Review("interesting course"));
+
+        appDAO.save(newCourse);
+    }
+
+
+    private void deleteCourse(AppDAO appDAO) {
+        int theId = 10;
+        appDAO.deleteCourseById(theId);
     }
 
     private void updateCourse(AppDAO appDAO) {
@@ -105,7 +125,7 @@ public class CruddemoApplication {
 
     private void deleteInstructor(AppDAO appDAO) {
         System.out.println("deleting instructor ");
-        appDAO.deleteInstructorById(1);
+        appDAO.deleteInstructorById(2);
 
     }
 
@@ -116,8 +136,8 @@ public class CruddemoApplication {
         InstructorDetail instructorDetail = new InstructorDetail("http://www.yt.com/ya", "kite");
         instructor.setInstructorDetail(instructorDetail);
 */
-        Instructor instructor = new Instructor("Ssitam", "Srukuc", "siitam@mail.com");
-        InstructorDetail instructorDetail = new InstructorDetail("http://www.yt.com/no", "bowl");
+        Instructor instructor = new Instructor("aaa", "bbb", "siitam@mail.com");
+        InstructorDetail instructorDetail = new InstructorDetail("http://wwwxxxxxxx/no", "rrrrrr");
         instructor.setInstructorDetail(instructorDetail);
 
 
