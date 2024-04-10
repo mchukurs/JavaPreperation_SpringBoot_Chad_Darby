@@ -34,9 +34,26 @@ public class CruddemoApplication {
             //updateInstructor(appDAO);
             //updateCourse(appDAO);
             //deleteCourse(appDAO);
-            createCourseAndReviews(appDAO);
+            //createCourseAndReviews(appDAO);
+            //retrieveCourseAndReviews(appDAO);
+            deleteCourseAndReviews(appDAO);
+
 
         };
+    }
+
+    private void deleteCourseAndReviews(AppDAO appDAO) {
+
+        int theId = 10;
+        appDAO.deleteCourseById(theId);//reviews deleted too due to cascade=all
+
+    }
+
+    private void retrieveCourseAndReviews(AppDAO appDAO) {
+        int theId = 10;
+        Course tempCourse = appDAO.findCourseAndReviewsByCourseId(theId);
+        System.out.println(tempCourse);
+        System.out.println(tempCourse.getReviews());
     }
 
     private void createCourseAndReviews(AppDAO appDAO) {
