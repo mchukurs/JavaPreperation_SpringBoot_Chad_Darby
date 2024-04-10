@@ -1,8 +1,11 @@
 package com.chukurs.cruddemo.dao;
 
+import com.chukurs.cruddemo.entity.Course;
 import com.chukurs.cruddemo.entity.Instructor;
 import com.chukurs.cruddemo.entity.InstructorDetail;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 
 public interface AppDAO {
@@ -15,4 +18,5 @@ public interface AppDAO {
     void deleteInstructorById(int theId);
     void deleteInstructorDetailById(int theId);
 
+    List<Course> findCoursesByInstructorId(int theId);
 }

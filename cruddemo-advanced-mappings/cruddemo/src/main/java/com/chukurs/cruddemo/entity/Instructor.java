@@ -24,7 +24,7 @@ public class Instructor {
     @JoinColumn(name = "instructor_detail_id")//telling hibernate what to join on
     private InstructorDetail instructorDetail;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "instructor", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST})
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "instructor", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST})
     private List<Course> courses;
 
     public Instructor() {
