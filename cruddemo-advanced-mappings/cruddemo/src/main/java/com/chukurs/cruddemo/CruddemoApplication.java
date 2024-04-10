@@ -1,10 +1,7 @@
 package com.chukurs.cruddemo;
 
 import com.chukurs.cruddemo.dao.AppDAO;
-import com.chukurs.cruddemo.entity.Course;
-import com.chukurs.cruddemo.entity.Instructor;
-import com.chukurs.cruddemo.entity.InstructorDetail;
-import com.chukurs.cruddemo.entity.Review;
+import com.chukurs.cruddemo.entity.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -36,10 +33,53 @@ public class CruddemoApplication {
             //deleteCourse(appDAO);
             //createCourseAndReviews(appDAO);
             //retrieveCourseAndReviews(appDAO);
-            deleteCourseAndReviews(appDAO);
+            //deleteCourseAndReviews(appDAO);
+            //createCourseAndStudent(appDAO);
+            // findCourseAndStudents(appDAO);
+            //findStudentAndCourses(appDAO);
+
+            addMoreCoursesForStudent(appDAO);
 
 
         };
+    }
+
+    private void addMoreCoursesForStudent(AppDAO appDAO) {
+        int theId = 2;
+        Student tempStudent = appDAO.findStudentAndCoursesByStudentId(theId);
+
+        Course a = new Course("JAva Course");
+        Course b = new Course("PYTHON Programming");
+        tempStudent.addCourse(a);
+        tempStudent.addCourse(b);
+        appDAO.updateStudent(tempStudent);
+    }
+
+    private void findCourseAndStudents(AppDAO appDAO) {
+        int theId = 10;
+        Course tempCourse = appDAO.findCourseAndStudentsByCourseId(theId);
+        System.out.println(tempCourse);
+        System.out.println(tempCourse.getStudents());
+    }
+
+    private void findStudentAndCourses(AppDAO appDAO) {
+        int theId = 1;
+        Student tempStudent = appDAO.findStudentAndCoursesByStudentId(theId);
+        System.out.println(tempStudent);
+        System.out.println(tempStudent.getCourses());
+    }
+
+    private void createCourseAndStudent(AppDAO appDAO) {
+        Course newCourse = new Course("Hot Course for all students");
+        Student a = new Student("ATest", "Doe", "ATest@doe.com");
+        Student b = new Student("BTest", "Doe", "BTest@doe.com");
+        Student c = new Student("CTest", "Doe", "CTest@doe.com");
+
+        newCourse.addStudent(a);
+        newCourse.addStudent(b);
+        newCourse.addStudent(c);
+
+        appDAO.save(newCourse);
     }
 
     private void deleteCourseAndReviews(AppDAO appDAO) {

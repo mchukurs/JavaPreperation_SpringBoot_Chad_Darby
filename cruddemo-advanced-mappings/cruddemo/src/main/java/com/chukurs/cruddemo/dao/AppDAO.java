@@ -3,6 +3,7 @@ package com.chukurs.cruddemo.dao;
 import com.chukurs.cruddemo.entity.Course;
 import com.chukurs.cruddemo.entity.Instructor;
 import com.chukurs.cruddemo.entity.InstructorDetail;
+import com.chukurs.cruddemo.entity.Student;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -34,4 +35,9 @@ public interface AppDAO {
     List<Course> findCoursesByInstructorId(int theId);
 
     Course findCourseAndReviewsByCourseId(int theId);
+    Course findCourseAndStudentsByCourseId(int theId);
+
+    Student findStudentAndCoursesByStudentId(int theId);
+
+    void updateStudent(Student theStudent);
 }
