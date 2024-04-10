@@ -38,10 +38,19 @@ public class CruddemoApplication {
             // findCourseAndStudents(appDAO);
             //findStudentAndCourses(appDAO);
 
-            addMoreCoursesForStudent(appDAO);
+            //addMoreCoursesForStudent(appDAO);
+
+            //deleteCourse(appDAO);
+
+            deleteStudentById(appDAO);
 
 
         };
+    }
+
+    private void deleteStudentById(AppDAO appDAO) {
+        int theId = 2;
+        appDAO.deleteStudentById(theId);
     }
 
     private void addMoreCoursesForStudent(AppDAO appDAO) {
