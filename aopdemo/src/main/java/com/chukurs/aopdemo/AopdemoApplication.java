@@ -18,8 +18,11 @@ public class AopdemoApplication {
     public CommandLineRunner commandLineRunner(AccountDAO accountDAO, MemberShipDAO memberShipDAO) {
 
         return runner -> {
-            demoTheBeforeAdviceAccount(accountDAO);
-            demoTheBeforeAdviceMember(memberShipDAO);
+           // demoTheBeforeAdviceAccount(accountDAO);
+           // demoTheBeforeAdviceMember(memberShipDAO);
+            accountDAO.setName("testName");
+          //  accountDAO.setServiceCode("testServiceName");
+          //  accountDAO.getName();
 
         };
     }

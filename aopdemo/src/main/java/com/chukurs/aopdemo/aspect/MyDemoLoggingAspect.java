@@ -12,9 +12,23 @@ public class MyDemoLoggingAspect {
     private void forDAOPackage() {
     }
 
-    @Before("forDAOPackage()")//using full path due to ultimate version of intellij, narrowing down
+
+    @Pointcut("execution(* com.chukurs.aopdemo.dao.*.get*(..))")
+    private void getter() {
+    }
+
+    @Pointcut("execution(* com.chukurs.aopdemo.dao.*.set*(..))")
+    private void setter() {
+    }
+
+
+    @Pointcut(" forDAOPackage()  &&  !( getter() || setter() )")
+    private void forDAOPackageExcludingBoiler() {
+    }
+
+    @Before("forDAOPackageExcludingBoiler()")//using full path due to ultimate version of intellij, narrowing down
     public void beforeAddAccountAdvice() {
-        System.out.println("This code was ran before");
+        System.out.println("This code was ran before non boiler");
     }
 
 }
