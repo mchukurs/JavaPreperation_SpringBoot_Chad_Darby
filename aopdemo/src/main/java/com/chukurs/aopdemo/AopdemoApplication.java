@@ -27,6 +27,7 @@ public class AopdemoApplication {
     private void demoTheBeforeAdviceAccount(AccountDAO accountDAO) {
 
         accountDAO.addAccount(new Account("matiss","5th level"),false);
+        accountDAO.doWork();
     }
 
     private void demoTheBeforeAdviceMember(MemberShipDAO memberShipDAO) {
