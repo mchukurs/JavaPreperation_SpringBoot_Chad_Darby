@@ -1,6 +1,7 @@
 package com.chukurs.aopdemo;
 
 import com.chukurs.aopdemo.dao.AccountDAO;
+import com.chukurs.aopdemo.dao.MemberShipDAO;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,17 +15,22 @@ public class AopdemoApplication {
     }
 
     @Bean
-    public CommandLineRunner commandLineRunner(AccountDAO accountDAO) {
+    public CommandLineRunner commandLineRunner(AccountDAO accountDAO, MemberShipDAO memberShipDAO) {
 
         return runner -> {
-            demoTheBeforeAdivce(accountDAO);
-
+            demoTheBeforeAdviceAccount(accountDAO);
+            demoTheBeforeAdviceMember(memberShipDAO);
 
         };
     }
 
-    private void demoTheBeforeAdivce(AccountDAO accountDAO) {
+    private void demoTheBeforeAdviceAccount(AccountDAO accountDAO) {
 
         accountDAO.addAccount();
+    }
+
+    private void demoTheBeforeAdviceMember(MemberShipDAO memberShipDAO) {
+
+        memberShipDAO.addAccount();
     }
 }
