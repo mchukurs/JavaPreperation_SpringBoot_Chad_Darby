@@ -1,11 +1,12 @@
 package com.chukurs.aopdemo.dao;
 
+import com.chukurs.aopdemo.Account;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class AccountDAOImpl implements AccountDAO {
     @Override
-    public void addAccount() {
-        System.out.println("Database is adding some accounts!");
+    public void addAccount(Account theAccount) {
+        System.out.println("Database is adding " + theAccount.getName());
     }
 }
