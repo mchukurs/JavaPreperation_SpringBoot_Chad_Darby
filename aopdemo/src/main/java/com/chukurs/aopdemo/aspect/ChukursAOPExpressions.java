@@ -6,7 +6,7 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class ChukursAOPExpressions {
     @Pointcut("execution(* com.chukurs.aopdemo.dao.*.*(..))")
-    private void forDAOPackage() {
+    public void forDAOPackage() {
     }
 
 

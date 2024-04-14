@@ -8,17 +8,15 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-
+@Order(-6)
 public class MyDemoLoggingAspect {
 
-
-    @Before("com.chukurs.aopdemo.aspect.ChukursAOPExpressions.forDAOPackage()s")//using full path due to ultimate version of intellij, narrowing down
+    @Order(-5)
+    @Before("com.chukurs.aopdemo.aspect.ChukursAOPExpressions.forDAOPackage()s")
+//using full path due to ultimate version of intellij, narrowing down
     public void beforeAddAccountAdvice() {
         System.out.println("\nThis code was ran before non boiler");
     }
-
-
-
 
 
 }
