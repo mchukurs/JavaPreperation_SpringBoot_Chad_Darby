@@ -2,10 +2,7 @@ package com.chukurs.aopdemo.aspect;
 
 import com.chukurs.aopdemo.Account;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -23,7 +20,7 @@ public class MyDemoLoggingAspect {
         System.out.println("\nThis code was ran before non boiler");
     }
 
-    @Order(-100)
+
     @AfterReturning(pointcut = "com.chukurs.aopdemo.aspect.ChukursAOPExpressions.forDAOPackage()", returning = "accounts")
     public void afterReturningFindAccountsAdvice(JoinPoint joinPoint, List<Account> accounts) {
 
@@ -31,6 +28,14 @@ public class MyDemoLoggingAspect {
         System.out.println("and the deleting the intercepted accounts:");
         accounts.clear();
         System.out.println(accounts);
+    }
+
+    @AfterThrowing(pointcut = "com.chukurs.aopdemo.aspect.ChukursAOPExpressions.forDAOPackage()", throwing = "exception")
+    public void afterThrowingFindAccountsAdvice(JoinPoint joinPoint, Throwable exception) {
+
+        System.out.println("\nTHERE IS AN EXCEPTION! HEEEEEEEEEEEEEEEEEEEEEEEEEEEEElP");
+        System.out.println("exc =============================> "+ exception.getMessage());
+        // System.out.println(exception.getMessage());
     }
 
 }

@@ -49,7 +49,7 @@ public class AccountDAOImpl implements AccountDAO {
         myAccounts.add(new Account("John", "Silver"));
         myAccounts.add(new Account("Madhu", "Platinum"));
         myAccounts.add(new Account("matiss", "Gold"));
-        System.out.println("line before returning myAccounts");
-        return myAccounts;
+        throw new RuntimeException("problem in code");
+        //return myAccounts;
     }
 }

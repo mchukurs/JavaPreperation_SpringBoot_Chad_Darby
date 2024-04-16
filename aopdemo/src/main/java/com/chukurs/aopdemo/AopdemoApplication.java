@@ -20,10 +20,10 @@ public class AopdemoApplication {
         return runner -> {
             // demoTheBeforeAdviceAccount(accountDAO);
             // demoTheBeforeAdviceMember(memberShipDAO);
-            accountDAO.setName("testName");
+            //accountDAO.setName("testName");
             //  accountDAO.setServiceCode("testServiceName");
             //  accountDAO.getName();
-            demoTheAfterReturningAdviceAccount(accountDAO);
+            demoTheAfterThrowingAdviceAccount(accountDAO);
 
         };
     }
@@ -34,10 +34,18 @@ public class AopdemoApplication {
         accountDAO.doWork();
     }
 
-    private void demoTheAfterReturningAdviceAccount(AccountDAO accountDAO) {
+    private void demoTheAfterReturningAdviceAccount(AccountDAO accountDAO) throws Exception {
         System.out.println("line before findAccounts");
         var a = accountDAO.findAccounts();
         System.out.println(a);
+
+    }
+
+    private void demoTheAfterThrowingAdviceAccount(AccountDAO accountDAO) throws Exception {
+        var a = accountDAO.findAccounts();
+
+
+
     }
 
     private void demoTheBeforeAdviceMember(MemberShipDAO memberShipDAO) {
