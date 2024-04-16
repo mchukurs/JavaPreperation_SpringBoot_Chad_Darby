@@ -28,7 +28,8 @@ public class MyDemoLoggingAspect {
     public void afterReturningFindAccountsAdvice(JoinPoint joinPoint, List<Account> accounts) {
 
         System.out.println("\nThis code was ran after returning findAccounts");
-        System.out.println("and the following accounts:");
+        System.out.println("and the deleting the intercepted accounts:");
+        accounts.clear();
         System.out.println(accounts);
     }
 
