@@ -3,6 +3,9 @@ package com.chukurs.aopdemo.dao;
 import com.chukurs.aopdemo.Account;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Repository
 public class AccountDAOImpl implements AccountDAO {
     private String name;
@@ -37,5 +40,15 @@ public class AccountDAOImpl implements AccountDAO {
     public void setServiceCode(String serviceCode) {
         System.out.println("inside setServiceCode account");
         this.serviceCode = serviceCode;
+    }
+
+    @Override
+    public List<Account> findAccounts() {
+        //mimic fake account retrieval
+        List<Account> myAccounts = new ArrayList<Account>();
+        myAccounts.add(new Account("John", "Silver"));
+        myAccounts.add(new Account("Madhu", "Platinum"));
+        myAccounts.add(new Account("matiss", "Gold"));
+        return myAccounts;
     }
 }
