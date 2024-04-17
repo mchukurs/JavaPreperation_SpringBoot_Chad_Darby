@@ -48,10 +48,16 @@ public class AccountDAOImpl implements AccountDAO {
             throw new RuntimeException("problem in code");
         } else {
             //mimic fake account retrieval
-            List<Account> myAccounts = new ArrayList<Account>();
+            List<Account> myAccounts = new ArrayList<>();
             myAccounts.add(new Account("John", "Silver"));
             myAccounts.add(new Account("Madhu", "Platinum"));
             myAccounts.add(new Account("matiss", "Gold"));
+            try {
+                wait(1000);
+            }
+            catch(Exception e){
+
+            }
             return myAccounts;
         }
 
