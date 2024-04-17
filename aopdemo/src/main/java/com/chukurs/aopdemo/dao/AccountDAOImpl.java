@@ -43,13 +43,17 @@ public class AccountDAOImpl implements AccountDAO {
     }
 
     @Override
-    public List<Account> findAccounts() {
-        //mimic fake account retrieval
-        List<Account> myAccounts = new ArrayList<Account>();
-        myAccounts.add(new Account("John", "Silver"));
-        myAccounts.add(new Account("Madhu", "Platinum"));
-        myAccounts.add(new Account("matiss", "Gold"));
-        throw new RuntimeException("problem in code");
-        //return myAccounts;
+    public List<Account> findAccounts(boolean causeException) {
+        if (causeException) {
+            throw new RuntimeException("problem in code");
+        } else {
+            //mimic fake account retrieval
+            List<Account> myAccounts = new ArrayList<Account>();
+            myAccounts.add(new Account("John", "Silver"));
+            myAccounts.add(new Account("Madhu", "Platinum"));
+            myAccounts.add(new Account("matiss", "Gold"));
+            return myAccounts;
+        }
+
     }
 }

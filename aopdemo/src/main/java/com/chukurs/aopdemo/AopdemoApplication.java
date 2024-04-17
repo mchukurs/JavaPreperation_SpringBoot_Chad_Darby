@@ -23,9 +23,15 @@ public class AopdemoApplication {
             //accountDAO.setName("testName");
             //  accountDAO.setServiceCode("testServiceName");
             //  accountDAO.getName();
-            demoTheAfterThrowingAdviceAccount(accountDAO);
+            //demoTheAfterThrowingAdviceAccount(accountDAO);
+            demoTheAfterAdviceAccount(accountDAO);
 
         };
+    }
+
+    private void demoTheAfterAdviceAccount(AccountDAO accountDAO) {
+        var a = accountDAO.findAccounts(false);
+
     }
 
     private void demoTheBeforeAdviceAccount(AccountDAO accountDAO) {
@@ -36,13 +42,13 @@ public class AopdemoApplication {
 
     private void demoTheAfterReturningAdviceAccount(AccountDAO accountDAO) throws Exception {
         System.out.println("line before findAccounts");
-        var a = accountDAO.findAccounts();
+        var a = accountDAO.findAccounts(false);
         System.out.println(a);
 
     }
 
     private void demoTheAfterThrowingAdviceAccount(AccountDAO accountDAO) throws Exception {
-        var a = accountDAO.findAccounts();
+        var a = accountDAO.findAccounts(true);
 
 
 

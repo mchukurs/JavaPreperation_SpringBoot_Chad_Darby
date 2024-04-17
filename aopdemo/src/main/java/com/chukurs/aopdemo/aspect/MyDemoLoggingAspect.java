@@ -34,8 +34,13 @@ public class MyDemoLoggingAspect {
     public void afterThrowingFindAccountsAdvice(JoinPoint joinPoint, Throwable exception) {
 
         System.out.println("\nTHERE IS AN EXCEPTION! HEEEEEEEEEEEEEEEEEEEEEEEEEEEEElP");
-        System.out.println("exc =============================> "+ exception.getMessage());
+        System.out.println("exc =============================> " + exception.getMessage());
         // System.out.println(exception.getMessage());
+    }
+
+    @After("com.chukurs.aopdemo.aspect.ChukursAOPExpressions.forDAOPackage()")
+    public void afterFindAccountsAdvice(JoinPoint joinPoint) {
+        System.out.println("======================> @After is done");
     }
 
 }
